@@ -60,3 +60,13 @@
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
 }
+
+table.middle {
+	position:absolute;
+	top:40%;
+	height:10em;
+	margin-top:-5em;
+	width: 80%;
+	margin-left:10%; 
+	margin-right:15%;
+}
