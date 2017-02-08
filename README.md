@@ -1,1 +1,1 @@
-Raspberry Pi and node.js for powerlifting judge light panel
+Raspberry Pi and arduino code for powerlifting judge light panel
