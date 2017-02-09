@@ -6,12 +6,6 @@ use CGI;
 my $q = CGI->new;
 
 print $q->header();
-print $q->start_html(
-	-title => 'Read jpanel status',
-	-style => '/jpanel/jpanel.css',
-	-bgcolor => 'black',
-	);
-
 my $url_param = "";
 my %button_status = (
 	0 => 0,
@@ -28,9 +22,33 @@ if(open(STATUS, "< $status")) {
 	}
 	close STATUS;
 	if($button_status{0} > 0 and $button_status{1} > 0 and $button_status{2} > 0) {
-		print "URL: $url_param\n";
+#		print "URL: $url_param\n";
+		print $q->start_html(
+			-title => 'Read jpanel status',
+			-style => '/jpanel/jpanel.css',
+			-bgcolor => 'black',
+			-script=>{
+				-type=>'JAVASCRIPT',
+				-src=>'/jpanel/js/jpanel.js',
+				-onLoad=>'updateLights()',
+			},
+			);
+	}
+	else {
+		print $q->start_html(
+			-title => 'Read jpanel status',
+			-style => '/jpanel/jpanel.css',
+			-bgcolor => 'black',
+			);
 	}
 #	unlink $status;
+}
+else {
+	print $q->start_html(
+		-title => 'Read jpanel status',
+		-style => '/jpanel/jpanel.css',
+		-bgcolor => 'black',
+		);
 }
 
 print $q->end_html, "\n";
