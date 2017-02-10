@@ -77,3 +77,7 @@ table.middle {
 	color: white;
 	font-family: Arial;
 }
+
+iframe {
+	border: 0;
+}
