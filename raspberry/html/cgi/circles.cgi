@@ -7,7 +7,7 @@ my $q = CGI->new;
 
 print $q->header();
 my $template = "/home/morten/devel/jpanel/raspberry/html/circles.template.html";
-my $status = "/home/morten/devel/jpanel/raspberry/html/jpanel.status";
+my $status = "/tmp/jpanel.status";
 
 my %circle_colour = (
 	0 => 'grey_circle',
@@ -20,6 +20,7 @@ my %circle_colour = (
 	);
 if(open(STATUS, "< $status")) {
 	my $page = read_template($template);
+	$page =~ s/\%\%\%RELOAD\%\%\%/<meta http-equiv="Refresh" content="10">/;
 	while(<STATUS>) {
 		if($_ =~ /#(\d):(\d):(\d):(\d):(\d);/) {
 			my $id = $1;
@@ -57,6 +58,7 @@ else {
 
 sub display_blank {
 	my $page = read_template($template);
+	$page =~ s/\%\%\%RELOAD\%\%\%//;
 	$page =~ s/\%\%\%(CIRCLE\d\d\d)\%\%\%/grey_circle/g;
 	$page =~ s/\%\%\%(SMALL_CIRCLE\d\d\d)\%\%\%/small_grey_circle/g;
 	print $page;

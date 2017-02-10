@@ -12,7 +12,7 @@ my %button_status = (
 	1 => 0,
 	2 => 0,
 	);
-my $status = "/home/morten/devel/jpanel/raspberry/html/jpanel.status";
+my $status = "/tmp/jpanel.status";
 if(open(STATUS, "< $status")) {
 	while(<STATUS>) {
 		if($_ =~ /#(\d):(\d):(\d):(\d):(\d);/) {
@@ -26,6 +26,7 @@ if(open(STATUS, "< $status")) {
 		print $q->start_html(
 			-title => 'Read jpanel status',
 			-style => '/jpanel/jpanel.css',
+			-head=>$q->meta({-http_equiv=>'Refresh', -content=>'5,'}),
 			-bgcolor => 'black',
 			-script=>{
 				-type=>'JAVASCRIPT',
@@ -38,6 +39,7 @@ if(open(STATUS, "< $status")) {
 		print $q->start_html(
 			-title => 'Read jpanel status',
 			-style => '/jpanel/jpanel.css',
+			-head=>$q->meta({-http_equiv=>'Refresh', -content=>'5,'}),
 			-bgcolor => 'black',
 			);
 	}
@@ -48,6 +50,7 @@ else {
 		-title => 'Read jpanel status',
 		-style => '/jpanel/jpanel.css',
 		-bgcolor => 'black',
+		-head=>$q->meta({-http_equiv=>'Refresh', -content=>'5,'}),
 		);
 }
 
