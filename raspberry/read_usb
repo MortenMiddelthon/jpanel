@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+
+my $usb = shift;
+if(!defined $usb) {
+	$usb = "/dev/ttyUSB0";
+}
+
+if(!-r $usb) {
+	die "$usb not readable!\n";
+}
+
+my %judges = (
+	0 => "Left",
+	1 => "Middle",
+	2 => "Right",
+	);
+
+my %colours = (
+	0 => "White",
+	1 => "Red",
+	2 => "Yellow",
+	3 => "Blue",
+	);
+
+# Setup USB dev
+my $speed = 9600;
+my $stty = "stty -F $usb cs8 $speed ignbrk -brkint -icrnl -imaxbel -opost -onlcr -isig -cooked -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts";
+system($stty);
+
+# Read from USB
+open(USB, "< $usb") or die "Can't read from $usb!\n";
+while(<USB>) {
+	print;
+	if($_ =~ /#(\d):(\d);/) {
+		print "Judge: $judges{$1}\n";
+		print "Button: $colours{$2}\n";
+	}
+}
+close USB;
