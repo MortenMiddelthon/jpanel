@@ -1,5 +1,8 @@
 #!/usr/bin/perl
 
+# Enable/disable debug output
+my $debug = 1;
+
 my $usb = shift;
 if(!defined $usb) {
 	$usb = "/dev/ttyUSB0";
@@ -8,6 +11,9 @@ if(!defined $usb) {
 if(!-r $usb) {
 	die "$usb not readable!\n";
 }
+
+# Write button status to this file
+my $status = "/tmp/jpanel.status";
 
 my %judges = (
 	0 => "Left",
@@ -30,10 +36,48 @@ system($stty);
 # Read from USB
 open(USB, "< $usb") or die "Can't read from $usb!\n";
 while(<USB>) {
-	print;
-	if($_ =~ /#(\d):(\d);/) {
+	print if $debug;
+	my $output = $_;
+	if($output =~ /#(\d):(\d);/) {
 		print "Judge: $judges{$1}\n";
 		print "Button: $colours{$2}\n";
+		&write_status($output);
 	}
 }
 close USB;
+
+sub write_status {
+	my $update = shift;
+	if(!defined $update or $update eq "") {
+		return 0;
+	}
+	my $judge = "";
+	my $button = 0;
+	if($update =~ /#(\d):(\d);/) {
+		$judge = $1;
+		$button = $2;
+	}
+	# Read current contents of status file
+	my $content = "";
+	if(-r $status) {
+		open(READSTATUS, "< $status");
+		while(<READSTATUS>) {
+			$content .= $_;
+		}
+		close READSTATUS;
+	}
+	if($content =~ s/#$judge:\d\;/#$judge:$button\;/m) {
+		# nothing
+	}
+	else {
+		$content = $update;
+	}
+	open(STATUS, "> $status");
+	print STATUS $content;
+	if($debug) {
+		print "#########\n";
+		print $content;
+		print "#########\n";
+	}
+	close STATUS;
+}
