@@ -1,15 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
-   "http://www.w3.org/TR/html4/frameset.dtd">
-<HTML>
-<HEAD>
-<TITLE>JPanel 1.0</TITLE>
-<link rel='stylesheet' href='jpanel.css'>
-</HEAD>
-<FRAMESET class="jpanel" rows="92%,*" frameborder="0" framespacing="0" >
-  <FRAME src="/cgi-jpanel/circles.cgi" name="circles" noresize scrolling="no">
-  <FRAMESET class="jpanel" cols="1%, *" frameborder="0" framespacing="0" >
-    <FRAME src="/cgi-jpanel/jpanel.cgi" name="jpanel" noresize scrolling="no">
-    <FRAME src="/cgi-jpanel/ip.cgi" name="ip_address" noresize scrolling="no">
-  </FRAMESET>
-</FRAMESET>
-</HTML>
+<html>
+	<head>
+	<title>iFrame test</title>
+	<link rel='stylesheet' href='jpanel.css'>
+	</head>
+<body bgcolor="black">
+
+<iframe src="/cgi-jpanel/circles_iframe.cgi" id="circles" name="circles" width="100%" height="500"></iframe>
+<iframe src="/cgi-jpanel/jpanel_iframe.cgi" id="jpanel" name="jpanel" width="5" height="5"></iframe>
+
+</body>
+</html>
