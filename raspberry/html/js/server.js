@@ -1,5 +1,13 @@
 "use strict";
 
+var serialport = require("serialport"); 
+var SerialPort = serialport;
+
+var serialPort = new SerialPort("/dev/ttyUSB0", {
+	  baudrate: 9600,
+	    parser: serialport.parsers.readline("\n")
+});
+
 // Optional. You will see this name in eg. 'ps' or 'top' command
 process.title = 'jpanel-server';
 
@@ -118,4 +126,22 @@ wsServer.on('request', function(request) {
         }
     });
 
+});
+
+serialPort.on('data', function (data) {
+	console.log('Data: ' + data);
+	var id = 0;
+	var button = 0;
+	id = data.substr(1,1);
+	button = data.substr(3,1);
+	id.trim();
+	button.trim();
+	console.log('ID: ', id);
+	console.log('button: ', button);
+	var json = JSON.stringify({ type:'message', id: id, button: button });
+	// broadcast message to all connected clients
+	for (var i=0; i < clients.length; i++) {
+		clients[i].sendUTF(json);
+	}
+	serialPort.flush();
 });

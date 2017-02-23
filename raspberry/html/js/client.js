@@ -24,7 +24,7 @@ $(function () {
     }
 
     // open connection
-    var connection = new WebSocket('ws://92.243.10.52:31337');
+    var connection = new WebSocket('ws://pi01.hjemme.flipp.net:31337');
 
     connection.onopen = function () {
         // first we want users to enter their names
@@ -40,6 +40,7 @@ $(function () {
 
     // most important part - incoming messages
     connection.onmessage = function (message) {
+	    console.log(message.data);
         // try to parse JSON message. Because we know that the server always returns
         // JSON this should work without any problem but we should make sure that
         // the massage is not chunked or otherwise damaged.
