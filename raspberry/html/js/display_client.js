@@ -1,3 +1,6 @@
+var counter = 0;
+var timeoutID;
+var delay = 5000;
 $(function () {
     "use strict";
 
@@ -49,16 +52,8 @@ $(function () {
 		var button = json.button;
 		console.log("ID: ", id);
 		console.log("Button: ", button);
-		// Reset lights
-		var light = document.getElementById(id);
-		light.style.backgroundColor = "#444444";
-		var light1 = document.getElementById(id+"_1");
-		light1.style.backgroundColor = "#444444";
-		var light2 = document.getElementById(id+"_2");
-		light2.style.backgroundColor = "#444444";
-		var light3 = document.getElementById(id+"_3");
-		light3.style.backgroundColor = "#444444";
-
+		// increase counter 
+		counter++;
 		if(button < 1) {
 			var light = document.getElementById(id);
 			light.style.backgroundColor = colours[button];
@@ -74,5 +69,38 @@ $(function () {
 			secondary_light_id.style.backgroundColor = colours[button];
 		}
 	    }
+	    if(counter == 3) {
+		    console.log("All lights set. Resetting....");
+		    counter = 0;
+		    timeoutID = window.setTimeout(resetLights, delay);
+	    }
     };
 });
+
+function resetLights() {
+	// Reset lights
+	var x;
+	for(x = 0; x < 3; x++) {
+		var reset_id = "";
+		var reset_secondary_id = "main_lightA_B";
+		reset_id = reset_id.concat('main_light', x);
+		reset_secondary_id = reset_secondary_id.replace(/A/, x);
+		reset_secondary_id = reset_secondary_id.replace(/B/, "");
+		var light = document.getElementById(reset_id);
+		light.style.backgroundColor = "#444444";
+		light = document.getElementById(reset_secondary_id+"1");
+		light.style.backgroundColor = "#444444";
+		light = document.getElementById(reset_secondary_id+"2");
+		light.style.backgroundColor = "#444444";
+		light = document.getElementById(reset_secondary_id+"3");
+		light.style.backgroundColor = "#444444";
+		/*
+		var light1 = document.getElementById(x+"_1");
+		light1.style.backgroundColor = "#444444";
+		var light2 = document.getElementById(x+"_2");
+		light2.style.backgroundColor = "#444444";
+		var light3 = document.getElementById(x+"_3");
+		light3.style.backgroundColor = "#444444";
+		*/
+	}
+}
