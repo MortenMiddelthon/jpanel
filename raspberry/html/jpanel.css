@@ -1,34 +1,34 @@
 #red_circle {
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: 300px;
 	background: red;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	border-radius: 100px;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
 }
 
 #white_circle {
-	width: 200px;
-	height: 200px;
+	width: 300px;
+	height: 300px;
 	background: white;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	border-radius: 100px;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
 }
 
 #grey_circle {
-	width: 200px;
-	height: 200px;
-	background: #444444;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	border-radius: 100px;
+	width: 300px;
+	height: 300px;
+	background: #111111;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
 }
 
 #small_grey_circle {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -82,36 +82,36 @@ iframe {
 	border: 0;
 }
 #main_light0 {
-	width: 200px;
-	height: 200px;
-	background: #444444;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	border-radius: 100px;
+	width: 300px;
+	height: 300px;
+	background: #111111;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
 }
 
 #main_light1 {
-	width: 200px;
-	height: 200px;
-	background: #444444;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	border-radius: 100px;
+	width: 300px;
+	height: 300px;
+	background: #111111;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
 }
 
 #main_light2 {
-	width: 200px;
-	height: 200px;
-	background: #444444;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	border-radius: 100px;
+	width: 300px;
+	height: 300px;
+	background: #111111;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	border-radius: 150px;
 }
 
 #main_light0_1 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -120,7 +120,7 @@ iframe {
 #main_light0_2 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -129,7 +129,7 @@ iframe {
 #main_light0_3 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -138,7 +138,7 @@ iframe {
 #main_light1_1 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -147,7 +147,7 @@ iframe {
 #main_light1_2 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -156,7 +156,7 @@ iframe {
 #main_light1_3 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -165,7 +165,7 @@ iframe {
 #main_light2_1 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -174,7 +174,7 @@ iframe {
 #main_light2_2 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;
@@ -183,7 +183,7 @@ iframe {
 #main_light2_3 {
 	width: 50px;
 	height: 50px;
-	background: #444444;
+	background: #111111;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border-radius: 25px;

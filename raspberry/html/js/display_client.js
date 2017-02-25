@@ -87,20 +87,20 @@ function resetLights() {
 		reset_secondary_id = reset_secondary_id.replace(/A/, x);
 		reset_secondary_id = reset_secondary_id.replace(/B/, "");
 		var light = document.getElementById(reset_id);
-		light.style.backgroundColor = "#444444";
+		light.style.backgroundColor = "#111111";
 		light = document.getElementById(reset_secondary_id+"1");
-		light.style.backgroundColor = "#444444";
+		light.style.backgroundColor = "#111111";
 		light = document.getElementById(reset_secondary_id+"2");
-		light.style.backgroundColor = "#444444";
+		light.style.backgroundColor = "#111111";
 		light = document.getElementById(reset_secondary_id+"3");
-		light.style.backgroundColor = "#444444";
+		light.style.backgroundColor = "#111111";
 		/*
 		var light1 = document.getElementById(x+"_1");
-		light1.style.backgroundColor = "#444444";
+		light1.style.backgroundColor = "#111111";
 		var light2 = document.getElementById(x+"_2");
-		light2.style.backgroundColor = "#444444";
+		light2.style.backgroundColor = "#111111";
 		var light3 = document.getElementById(x+"_3");
-		light3.style.backgroundColor = "#444444";
+		light3.style.backgroundColor = "#111111";
 		*/
 	}
 }
