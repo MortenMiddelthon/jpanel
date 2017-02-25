@@ -63,12 +63,12 @@
 
 table.middle {
 	position:absolute;
-	top:40%;
+	top:20%;
 	height:10em;
 	margin-top:-5em;
-	width: 80%;
-	margin-left:10%; 
-	margin-right:15%;
+	width: 90%;
+	margin-left:5%; 
+	margin-right:5%;
 }
 
 .jpanel {
