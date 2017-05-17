@@ -1,6 +1,6 @@
 #red_circle {
-	width: 500px;
-	height: 500px;
+	width: 350px;
+	height: 350px;
 	background: red;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
@@ -8,8 +8,8 @@
 }
 
 #white_circle {
-	width: 500px;
-	height: 500px;
+	width: 350px;
+	height: 350px;
 	background: white;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
@@ -17,8 +17,8 @@
 }
 
 #grey_circle {
-	width: 500px;
-	height: 500px;
+	width: 350px;
+	height: 350px;
 	background: #111111;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
@@ -69,6 +69,12 @@ table.middle {
 	width: 90%;
 	margin-left:5%; 
 	margin-right:5%;
+	border: 1px solid grey;
+	border-collapse: collapse;
+}
+td.border {
+	border: 1px solid grey;
+	padding: 20px;
 }
 
 .jpanel {
@@ -82,8 +88,8 @@ iframe {
 	border: 0;
 }
 #main_light0 {
-	width: 500px;
-	height: 500px;
+	width: 350px;
+	height: 350px;
 	background: #111111;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
@@ -91,8 +97,8 @@ iframe {
 }
 
 #main_light1 {
-	width: 500px;
-	height: 500px;
+	width: 350px;
+	height: 350px;
 	background: #111111;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
@@ -100,8 +106,8 @@ iframe {
 }
 
 #main_light2 {
-	width: 500px;
-	height: 500px;
+	width: 350px;
+	height: 350px;
 	background: #111111;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
