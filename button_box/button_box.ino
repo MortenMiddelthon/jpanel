@@ -6,57 +6,52 @@ SoftwareSerial RS485(SSerialRX, SSerialTX); // RX, TX
 #define RS485Transmit    HIGH
 #define RS485Receive     LOW
 
-#define WHITE 1
-#define RED 0
 #define ID0 12
 #define ID1 13
 #define BUTTON_WHITE 0
 #define BUTTON_RED 1
+#define BUTTON_YELLOW 2
+#define BUTTON_BLUE 3
 
-uint16_t white = 0, red = 0;
-uint8_t white_state = 0, red_state = 0;
+uint16_t buttons[4];
+uint8_t button_state = 0;
 uint8_t id = 0;
 
 
 void setup () {
 	Serial.begin(9600);
-	pinMode(WHITE, INPUT);
-	pinMode(RED, INPUT);
 	pinMode(ID0, INPUT);
 	pinMode(ID1, INPUT);
 	pinMode(SSerialTxControl, OUTPUT);    
+	// Default RX for RS485
 	digitalWrite(SSerialTxControl, RS485Receive);
 	RS485.begin(9600);   // set the data rate 
-
-
+	// Read ID
 	id += digitalRead(ID0);
 	id += digitalRead(ID1);
 	Serial.println("[Button Box]");
 	Serial.print("[ID: ");
 	Serial.print(id);
 	Serial.println("]");
+/*
+	Serial.println(digitalRead(ID0));
+	Serial.println(digitalRead(ID1));
+*/
 }
 
 void loop () {
-	white = analogRead(WHITE);
-	red = analogRead(RED);
-	if(white < 500 && white_state == 0) {
-		white_state = 1;
-		txButton(BUTTON_WHITE);
-		delay(200);
+	uint8_t b;
+	for(b = 0; b < 4; b++) {
+		buttons[b] = analogRead(b);
+		if(buttons[b] > 500 && button_state == 0) {
+			button_state = 1;
+			txButton(b);
+			delay(200);
+		}
+		else if(buttons[b] < 500 && button_state == 1) {
+			button_state = 0;
+		}
 	}
-	else if(white > 500 && white_state == 1) {
-		white_state = 0;
-	}
-	if(red < 500 && red_state == 0) {
-		red_state = 1;
-		txButton(BUTTON_RED);
-		delay(200);
-	}
-	else if(red > 500 && red_state == 1) {
-		red_state = 0;
-	}
-	delay(50);
 }
 
 void txButton(uint8_t button) {
