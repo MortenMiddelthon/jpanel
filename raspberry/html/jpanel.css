@@ -90,7 +90,7 @@ iframe {
 #main_light0 {
 	width: 350px;
 	height: 350px;
-	background: #111111;
+	background: #000000;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
 	border-radius: 250px;
@@ -99,7 +99,7 @@ iframe {
 #main_light1 {
 	width: 350px;
 	height: 350px;
-	background: #111111;
+	background: #000000;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
 	border-radius: 250px;
@@ -108,7 +108,7 @@ iframe {
 #main_light2 {
 	width: 350px;
 	height: 350px;
-	background: #111111;
+	background: #000000;
 	-moz-border-radius: 250px;
 	-webkit-border-radius: 250px;
 	border-radius: 250px;

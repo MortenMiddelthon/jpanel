@@ -1,6 +1,7 @@
 var counter = 0;
 var timeoutID;
 var delay = 5000;
+var ip = location.host;
 $(function () {
     "use strict";
 
@@ -23,7 +24,8 @@ $(function () {
     }
 
     // open connection
-    var connection = new WebSocket('ws://pi01.hjemme.flipp.net:31337');
+    var host = 'ws://' + ip + ':31337';
+    var connection = new WebSocket(host);
 
     connection.onopen = function () {
         // first we want users to enter their names
