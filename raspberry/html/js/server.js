@@ -8,6 +8,9 @@ var serialPort = new SerialPort("/dev/ttyUSB0", {
 	    parser: serialport.parsers.readline("\n")
 });
 
+var delay = 10000;
+var timeoutID;
+
 // Optional. You will see this name in eg. 'ps' or 'top' command
 process.title = 'jpanel-server';
 
@@ -111,6 +114,7 @@ function transmit() {
 		}
 		// Reset
 		panels = ["-", "-", "-"];
+		timeoutID = window.setTimeout(pause, delay);
 	}
 }
 
@@ -121,4 +125,7 @@ function isJSON(str) {
 		return false;
 	}
 	return true;
+}
+
+function pause() {
 }
