@@ -199,3 +199,8 @@ iframe {
 	font-family: Verdana;
 	font-size: 2em;
 }
+
+#logo {
+	padding: 1px;
+	border: 1px solid #dddddd;
+}
