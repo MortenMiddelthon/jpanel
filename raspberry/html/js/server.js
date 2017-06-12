@@ -10,6 +10,7 @@ var serialPort = new SerialPort("/dev/ttyUSB0", {
 
 var delay = 10000;
 var timeoutID;
+var acceptInput = 1;
 
 // Optional. You will see this name in eg. 'ps' or 'top' command
 process.title = 'jpanel-server';
@@ -87,19 +88,21 @@ wsServer.on('request', function(request) {
 });
 
 serialPort.on('data', function (data) {
-	console.log('Data: ' + data);
-	var id = 0;
-	var button = 0;
-	id = data.substr(1,1);
-	button = data.substr(3,1);
-	id.trim();
-	button.trim();
-	console.log('ID: ', id);
-	console.log('button: ', button);
-	var json = JSON.stringify({ type:'message', id: id, button: button });
-	panels[id] = json;
-//	console.log("JSON ", id, panels[id]);
-	transmit();
+	if(acceptInput == 1) {
+		console.log('Data: ' + data);
+		var id = 0;
+		var button = 0;
+		id = data.substr(1,1);
+		button = data.substr(3,1);
+		id.trim();
+		button.trim();
+		console.log('ID: ', id);
+		console.log('button: ', button);
+		var json = JSON.stringify({ type:'message', id: id, button: button });
+		panels[id] = json;
+	//	console.log("JSON ", id, panels[id]);
+		transmit();
+	}
 });
 
 function transmit() {
@@ -114,7 +117,8 @@ function transmit() {
 		}
 		// Reset
 		panels = ["-", "-", "-"];
-		timeoutID = window.setTimeout(pause, delay);
+		acceptInput = 0;
+		timeoutID = setTimeout(pause, delay);
 	}
 }
 
@@ -128,4 +132,6 @@ function isJSON(str) {
 }
 
 function pause() {
+	console.log("Ready");
+	acceptInput = 1;
 }

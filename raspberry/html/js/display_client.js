@@ -1,6 +1,6 @@
 var counter = 0;
 var timeoutID;
-var delay = 5000;
+var delay = 10000;
 var ip = location.host;
 $(function () {
     "use strict";
@@ -30,6 +30,7 @@ $(function () {
     connection.onopen = function () {
         // first we want users to enter their names
         input.removeAttr('disabled');
+        main_text.innerHTML = "Sommerstevne 2017";
     };
 
     connection.onerror = function (error) {
