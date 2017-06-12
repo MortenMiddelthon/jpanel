@@ -34,8 +34,7 @@ $(function () {
 
     connection.onerror = function (error) {
         // just in there were some problems with conenction...
-        content.html($('<p>', { text: 'Sorry, but there\'s some problem with your '
-                                    + 'connection or the server is down.' } ));
+        main_text.innerHTML = "Websocket connection down";
     };
 
     // most important part - incoming messages

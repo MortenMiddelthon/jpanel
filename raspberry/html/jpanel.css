@@ -69,7 +69,6 @@ table.middle {
 	width: 90%;
 	margin-left:5%; 
 	margin-right:5%;
-	border: 1px solid grey;
 	border-collapse: collapse;
 }
 td.border {
@@ -193,4 +192,10 @@ iframe {
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
+}
+
+#main_text {
+	color: #ffffff;
+	font-family: Verdana;
+	font-size: 2em;
 }
