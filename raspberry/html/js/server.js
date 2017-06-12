@@ -10,7 +10,9 @@ var serialPort = new SerialPort("/dev/ttyUSB0", {
 
 var delay = 10000;
 var timeoutID;
+var timeoutIDReset;
 var acceptInput = 1;
+var resetPanels = 0;
 
 // Optional. You will see this name in eg. 'ps' or 'top' command
 process.title = 'jpanel-server';
@@ -89,6 +91,10 @@ wsServer.on('request', function(request) {
 
 serialPort.on('data', function (data) {
 	if(acceptInput == 1) {
+		if(resetPanels == 0) {
+			resetPanels = 1;
+			timeoutIDReset = setTimeout(clear, 30000);
+		}
 		console.log('Data: ' + data);
 		var id = 0;
 		var button = 0;
@@ -117,7 +123,9 @@ function transmit() {
 		}
 		// Reset
 		panels = ["-", "-", "-"];
+		resetPanels = 0;
 		acceptInput = 0;
+		clearTimeout(timeoutIDReset);
 		timeoutID = setTimeout(pause, delay);
 	}
 }
@@ -134,4 +142,11 @@ function isJSON(str) {
 function pause() {
 	console.log("Ready");
 	acceptInput = 1;
+}
+
+function clear() {
+	// Reset
+	panels = ["-", "-", "-"];
+	resetPanels = 0;
+	console.log("Reset panels");
 }
