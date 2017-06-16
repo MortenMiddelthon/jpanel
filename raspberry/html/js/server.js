@@ -2,6 +2,11 @@
 
 "use strict";
 
+var sys = require('sys')
+var exec = require('child_process').exec;
+function puts(error, stdout, stderr) { sys.puts(stdout) }
+exec("/home/morten/git/jpanel/raspberry/usb.sh", puts);
+
 var serialport = require("serialport"); 
 var SerialPort = serialport;
 
