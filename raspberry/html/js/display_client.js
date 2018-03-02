@@ -30,7 +30,7 @@ $(function () {
     connection.onopen = function () {
         // first we want users to enter their names
         input.removeAttr('disabled');
-        main_text.innerHTML = "Rogalandsmesterskap 2017";
+        main_text.innerHTML = "RM S&oslash;rVest 2018";
     };
 
     connection.onerror = function (error) {
