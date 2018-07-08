@@ -204,3 +204,30 @@ iframe {
 	padding: 1px;
 	border: 1px solid #dddddd;
 }
+
+#status_light0 {
+	width: 20px;
+	height: 20px;
+	background: #111111;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#status_light1 {
+	width: 20px;
+	height: 20px;
+	background: #111111;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#status_light2 {
+	width: 20px;
+	height: 20px;
+	background: #111111;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
