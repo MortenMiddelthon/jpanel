@@ -76,6 +76,13 @@ $(function () {
 		    counter = 0;
 		    timeoutID = window.setTimeout(resetLights, delay);
 	    }
+	if (json.type === 'status') {
+		var id = "";
+		id = id.concat('status_light', json.id);
+		console.log("ID: ", id);
+		var light = document.getElementById(id);
+		light.style.backgroundColor = "green";
+	    }
     };
 });
 
@@ -85,7 +92,9 @@ function resetLights() {
 	for(x = 0; x < 3; x++) {
 		var reset_id = "";
 		var reset_secondary_id = "main_lightA_B";
+		var reset_status = "";
 		reset_id = reset_id.concat('main_light', x);
+		reset_status = reset_status.concat('status_light', x);
 		reset_secondary_id = reset_secondary_id.replace(/A/, x);
 		reset_secondary_id = reset_secondary_id.replace(/B/, "");
 		var light = document.getElementById(reset_id);
@@ -95,6 +104,8 @@ function resetLights() {
 		light = document.getElementById(reset_secondary_id+"2");
 		light.style.backgroundColor = "#111111";
 		light = document.getElementById(reset_secondary_id+"3");
+		light.style.backgroundColor = "#111111";
+		var light = document.getElementById(reset_status);
 		light.style.backgroundColor = "#111111";
 		/*
 		var light1 = document.getElementById(x+"_1");

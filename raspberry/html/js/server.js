@@ -114,13 +114,18 @@ serialPort.on('data', function (data) {
 		var json = JSON.stringify({ type:'message', id: id, button: button });
 		panels[id] = json;
 	//	console.log("JSON ", id, panels[id]);
-		transmit();
+		transmit(id);
 	}
 });
 
-function transmit() {
+function transmit(id) {
 	// if variables are set for all panels
 	// broadcast message to all connected clients
+
+	for (var i=0; i < clients.length; i++) {
+		var json = JSON.stringify({ type:'status', id: id});
+		clients[i].sendUTF(json);
+	}
 	if(isJSON(panels[0]) && isJSON(panels[1]) && isJSON(panels[2])) {
 		console.log("All panels pressed");
 		for (var i=0; i < clients.length; i++) {
