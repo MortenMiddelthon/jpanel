@@ -21,6 +21,20 @@ var timeoutIDReset;
 var acceptInput = 1;
 var resetPanels = 0;
 
+// Connect to mysql
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'jpanel',
+  password: 'elgbert569',
+  database: 'jpanel'
+});
+
+connection.connect((err) => {
+	  if (err) throw err;
+	    console.log('Connected!');
+});
+
 // Optional. You will see this name in eg. 'ps' or 'top' command
 process.title = 'jpanel-server';
 
@@ -41,6 +55,7 @@ var clients = [ ];
 
 // judge_panels
 var panels = ["-", "-", "-"];
+var results = [0, 0, 0];
 
 /**
  * Helper function for escaping input strings
@@ -113,6 +128,7 @@ serialPort.on('data', function (data) {
 		console.log('button: ', button);
 		var json = JSON.stringify({ type:'message', id: id, button: button });
 		panels[id] = json;
+		results[id] = button;
 	//	console.log("JSON ", id, panels[id]);
 		transmit(id);
 	}
@@ -128,6 +144,11 @@ function transmit(id) {
 	}
 	if(isJSON(panels[0]) && isJSON(panels[1]) && isJSON(panels[2])) {
 		console.log("All panels pressed");
+		const query_result = { ref_left: results[0], ref_center: results[1], ref_right: results[2] };
+		con.query('INSERT INTO results SET ?', query_result, (err, res) => {
+			  if(err) throw err;
+			  console.log('Last insert ID:', res.insertId);
+		});
 		for (var i=0; i < clients.length; i++) {
 			clients[i].sendUTF(panels[0]);
 			clients[i].sendUTF(panels[1]);
