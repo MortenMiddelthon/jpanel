@@ -76,12 +76,16 @@ $(function () {
 		    counter = 0;
 		    timeoutID = window.setTimeout(resetLights, delay);
 	    }
-	if (json.type === 'status') {
+	    if (json.type === 'status') {
 		var id = "";
 		id = id.concat('status_light', json.id);
 		console.log("ID: ", id);
 		var light = document.getElementById(id);
 		light.style.backgroundColor = "green";
+	    }
+	    if (json.type === 'reset') {
+		    console.log("Reset");
+		    timeoutID = window.setTimeout(resetLights, 0);
 	    }
     };
 });

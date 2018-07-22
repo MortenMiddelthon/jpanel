@@ -160,5 +160,9 @@ function clear() {
 	// Reset
 	panels = ["-", "-", "-"];
 	resetPanels = 0;
+	var json = JSON.stringify({ type:'reset' });
+	for (var i=0; i < clients.length; i++) {
+		clients[i].sendUTF(json);
+	}
 	console.log("Reset panels");
 }
